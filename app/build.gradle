@@ -6,7 +6,7 @@ android {
     buildToolsVersion "26.0.0"
     defaultConfig {
         applicationId "com.zyc.player"
-        minSdkVersion 15
+        minSdkVersion 9
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -18,10 +18,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+        all32 { minSdkVersion 9 }
+        all64 { minSdkVersion 21 }
+        // armv5 {}
+        // armv7a {}
+        // arm64 { minSdkVersion 21 }
+        // x86 {}
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -29,6 +38,23 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.0'
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+//    compile project(':ijkplayer-arm64')
+//    compile project(':ijkplayer-armv5')
+//    compile project(':ijkplayer-armv7a')
+    compile project(':ijkplayer-exo')
+    compile project(':ijkplayer-java')
+//    compile project(':ijkplayer-x86')
+//    compile project(':ijkplayer-x86_64')
+
+    all32Compile project(':ijkplayer-armv5')
+    all32Compile project(':ijkplayer-armv7a')
+    all32Compile project(':ijkplayer-x86')
+
+    all64Compile project(':ijkplayer-armv5')
+    all64Compile project(':ijkplayer-armv7a')
+    all64Compile project(':ijkplayer-arm64')
+    all64Compile project(':ijkplayer-x86')
+    all64Compile project(':ijkplayer-x86_64')
 }
 repositories {
     mavenCentral()
