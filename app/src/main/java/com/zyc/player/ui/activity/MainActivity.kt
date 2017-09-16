@@ -1,7 +1,8 @@
-package com.zyc.player
+package com.zyc.player.ui.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.zyc.player.R
 
 class MainActivity : AppCompatActivity() {
 
