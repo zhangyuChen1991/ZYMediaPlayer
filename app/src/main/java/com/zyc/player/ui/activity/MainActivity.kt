@@ -27,35 +27,19 @@ class MainActivity : AppCompatActivity() {
         mBtnPlay = findViewById(R.id.btn_play) as Button
 
         mBtnPlay!!.setOnClickListener {
-            val dataSource = FileMediaDataSource(File(getTargetFilePath()))
-            mZYVideoView?.iMediaPlayer?.setDataSource(dataSource)
-            mZYVideoView?.iMediaPlayer?.setScreenOnWhilePlaying(true)
-            mZYVideoView?.iMediaPlayer?.prepareAsync()
+//            val dataSource = FileMediaDataSource(File(getTargetFilePath()))
+//            mZYVideoView?.play(dataSource)
+
+            var uri : Uri = Uri.fromFile(getTargetFile())
+            mZYVideoView?.play(this@MainActivity,uri)
         }
 
-        mZYVideoView?.iMediaPlayer?.setOnPreparedListener(object : IMediaPlayer.OnPreparedListener {
-            override fun onPrepared(mp: IMediaPlayer?) {
-                mZYVideoView?.start()
-            }
-        })
 
-        mZYVideoView?.iMediaPlayer?.setOnErrorListener(object : IMediaPlayer.OnErrorListener {
-            override fun onError(mp: IMediaPlayer?, what: Int, extra: Int): Boolean {
-                Log.d(TAG, "Error: " + what + "," + extra)
-                ToastUtil.showToastShort("Error: " + what + "," + extra)
-
-                return true
-            }
-        });
     }
 
     private fun getTargetFile(): File? {
-        var exFile = Environment.getExternalStorageDirectory();
-        var exFilePath = exFile.absolutePath
-        Log.d(TAG, "exFilePath:" + exFilePath)
-
-        var targetFilePath = exFilePath + "/相机/video_20170918_164602.mp4"
-        var targetFile = FileUtils.getFileByPath(targetFilePath)
+        var targetFilePath = getTargetFilePath()
+        var targetFile = FileUtils.getFileByPath(targetFilePath!!)
         return targetFile
     }
 

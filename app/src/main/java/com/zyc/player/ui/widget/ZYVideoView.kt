@@ -2,14 +2,17 @@ package com.zyc.player.ui.widget
 
 import android.content.Context
 import android.graphics.Color
+import android.net.Uri
 import android.util.AttributeSet
 import android.util.Log
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import android.widget.FrameLayout
 import android.widget.MediaController
+import com.zyc.player.util.ToastUtil
 import tv.danmaku.ijk.media.player.IMediaPlayer
 import tv.danmaku.ijk.media.player.IjkMediaPlayer
+import tv.danmaku.ijk.media.player.misc.IMediaDataSource
 
 /**
  * Created by ZhangYu on 2017/9/16.
@@ -58,11 +61,34 @@ class ZYVideoView : FrameLayout, MediaController.MediaPlayerControl {
             }
         })
 
+        iMediaPlayer?.setOnPreparedListener(object : IMediaPlayer.OnPreparedListener {
+            override fun onPrepared(mp: IMediaPlayer?) {
+                start()
+            }
+        })
+
+        iMediaPlayer?.setOnErrorListener(object : IMediaPlayer.OnErrorListener {
+            override fun onError(mp: IMediaPlayer?, what: Int, extra: Int): Boolean {
+                Log.d(TAG, "Error: " + what + "," + extra)
+                ToastUtil.showToastShort("Error: " + what + "," + extra)
+                return true
+            }
+        })
     }
 
+    fun play(context:Context,uri: Uri){
+        iMediaPlayer?.setDataSource(context,uri)
+        iMediaPlayer?.setScreenOnWhilePlaying(true)
+        iMediaPlayer?.prepareAsync()
+    }
+
+    fun play(mediaDataSource: IMediaDataSource){
+        iMediaPlayer?.setDataSource(mediaDataSource)
+        iMediaPlayer?.setScreenOnWhilePlaying(true)
+        iMediaPlayer?.prepareAsync()
+    }
 
     override fun isPlaying(): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         return iMediaPlayer?.isPlaying!!
     }
 
