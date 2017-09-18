@@ -27,6 +27,12 @@ android {
         // arm64 { minSdkVersion 21 }
         // x86 {}
     }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
 }
 
 dependencies {

@@ -1,10 +1,11 @@
 package com.zyc.player.ui.widget
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
+import android.util.Log
 import android.view.SurfaceHolder
 import android.view.SurfaceView
-import android.view.View
 import android.widget.FrameLayout
 import android.widget.MediaController
 import tv.danmaku.ijk.media.player.IMediaPlayer
@@ -16,9 +17,10 @@ import tv.danmaku.ijk.media.player.IjkMediaPlayer
 class ZYVideoView : FrameLayout, MediaController.MediaPlayerControl {
 
 
-    private var iMediaPlayer: IMediaPlayer? = null;
+    var iMediaPlayer: IMediaPlayer? = null;
     private var mContext: Context? = null;
     private var mSurfaceView: SurfaceView? = null
+    val TAG = "ZYVideoView"
 
     constructor(ctx: Context) : super(ctx) {
         initVideoView(ctx)
@@ -38,29 +40,30 @@ class ZYVideoView : FrameLayout, MediaController.MediaPlayerControl {
 
         mSurfaceView = SurfaceView(mContext)
         addView(mSurfaceView)
-        iMediaPlayer?.setDisplay(mSurfaceView?.holder)
-
 
         mSurfaceView?.holder?.addCallback(object : SurfaceHolder.Callback {
             override fun surfaceChanged(holder: SurfaceHolder?, format: Int, width: Int, height: Int) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                Log.d(TAG, "surfaceChanged")
+
             }
 
             override fun surfaceDestroyed(holder: SurfaceHolder?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                Log.d(TAG, "surfaceDestroyed")
+                iMediaPlayer!!.setDisplay(null)
             }
 
             override fun surfaceCreated(holder: SurfaceHolder?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                Log.d(TAG, "surfaceCreated")
+                iMediaPlayer!!.setDisplay(holder)
             }
-
         })
-
 
     }
 
+
     override fun isPlaying(): Boolean {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return iMediaPlayer?.isPlaying!!
     }
 
     override fun canSeekForward(): Boolean {
@@ -69,10 +72,12 @@ class ZYVideoView : FrameLayout, MediaController.MediaPlayerControl {
 
     override fun getDuration(): Int {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return iMediaPlayer?.duration!!.toInt()
     }
 
     override fun pause() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        iMediaPlayer?.pause()
     }
 
     override fun getBufferPercentage(): Int {
@@ -81,10 +86,12 @@ class ZYVideoView : FrameLayout, MediaController.MediaPlayerControl {
 
     override fun seekTo(pos: Int) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        iMediaPlayer?.seekTo(pos.toLong())
     }
 
     override fun getCurrentPosition(): Int {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return iMediaPlayer?.currentPosition!!.toInt()
     }
 
     override fun canSeekBackward(): Boolean {
@@ -92,7 +99,7 @@ class ZYVideoView : FrameLayout, MediaController.MediaPlayerControl {
     }
 
     override fun start() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        iMediaPlayer?.start()
     }
 
     override fun getAudioSessionId(): Int {
