@@ -7,23 +7,21 @@ import android.os.Environment
 import android.util.Log
 import android.widget.Button
 import com.zyc.player.R
-import com.zyc.player.media.FileMediaDataSource
-import com.zyc.player.ui.widget.ZYVideoView
+import com.zyc.player.ui.widget.DemoVideoView
+import com.zyc.player.ui.widget.base.BaseVideoView
 import com.zyc.player.util.FileUtils
-import com.zyc.player.util.ToastUtil
-import tv.danmaku.ijk.media.player.IMediaPlayer
 import java.io.File
 
 class MainActivity : AppCompatActivity() {
 
-    var mZYVideoView: ZYVideoView? = null
+    lateinit var mZYVideoView: DemoVideoView
     var mBtnPlay: Button? = null
     val TAG = "MainActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        mZYVideoView = findViewById(R.id.video_view) as ZYVideoView?
+        mZYVideoView = findViewById(R.id.video_view) as DemoVideoView
         mBtnPlay = findViewById(R.id.btn_play) as Button
 
         mBtnPlay!!.setOnClickListener {
@@ -48,7 +46,22 @@ class MainActivity : AppCompatActivity() {
         var exFilePath = exFile.absolutePath
         Log.d(TAG, "exFilePath:" + exFilePath)
 
-        var targetFilePath = exFilePath + "/相机/video_20170918_164602.mp4"
+        var targetFilePath = exFilePath + "/DCIM/zuiyou/187.mp4"
         return targetFilePath
+    }
+
+    override fun onPause() {
+        mZYVideoView.onPause()
+        super.onPause()
+    }
+
+    override fun onDestroy() {
+        mZYVideoView.onDestory()
+        super.onDestroy()
+    }
+
+    override fun onResume() {
+        mZYVideoView.onResume()
+        super.onResume()
     }
 }

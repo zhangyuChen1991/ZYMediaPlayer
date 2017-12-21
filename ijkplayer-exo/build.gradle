@@ -6,12 +6,11 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     //noinspection GroovyAssignabilityCheck
     buildToolsVersion rootProject.ext.buildToolsVersion
-
     lintOptions {
         abortOnError false
     }
     defaultConfig {
-        minSdkVersion 9
+        minSdkVersion 16
         targetSdkVersion rootProject.ext.targetSdkVersion
     }
     buildTypes {
@@ -21,13 +20,13 @@ android {
         }
     }
     buildToolsVersion '25.0.0'
+    productFlavors {
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.google.android.exoplayer:exoplayer:r1.5.11'
-
     compile project(':ijkplayer-java')
     // compile 'tv.danmaku.ijk.media:ijkplayer-java:0.8.0'
 }

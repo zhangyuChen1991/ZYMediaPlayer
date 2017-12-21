@@ -5,11 +5,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.zyc.player.ui.widget.ZYVideoView
+    <com.zyc.player.ui.widget.DemoVideoView
         android:id="@+id/video_view"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="#80000000"></com.zyc.player.ui.widget.ZYVideoView>
+        android:background="#80000000"></com.zyc.player.ui.widget.DemoVideoView>
 
 
     <Button
