@@ -45,6 +45,9 @@ class DemoVideoView : BaseVideoView, View.OnClickListener {
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
                 iMediaPlayer.seekTo(seekBar?.progress!!.toLong())
+                if(!isPlaying){
+                    iMediaPlayer.start()
+                }
             }
 
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
