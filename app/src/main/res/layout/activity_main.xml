@@ -9,7 +9,7 @@
         android:id="@+id/video_view"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="#80000000"></com.zyc.player.ui.widget.DemoVideoView>
+        android:background="#aa000000"></com.zyc.player.ui.widget.DemoVideoView>
 
 
     <Button

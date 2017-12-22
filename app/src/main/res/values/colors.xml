@@ -1,6 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="transparent">#00000000</color>
+
+    <!--APP主色-->
+    <color name="colorPrimary">#FFFF2D55</color>
+    <color name="colorPrimaryAlpha0.5">#7eFF2D55</color>
+    <color name="colorPrimaryDark">#cccccc</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorAppRed">#e61616</color>
+
+    <color name="colorTools">#ffffffff</color>
+    <color name="colorActivityContentBackground">#fff4f4f4</color>
+
+    <!--Themem color-->
+    <color name="colorAppTheme">#444A59</color>
+
+    <!--Background -->
+    <color name="colorActivityBackground">#fff4f4f4</color>
+    <color name="activity_content_background">#fff4f4f4</color>
+    <color name="layout_corners_bg_fs">#fff4f4f4</color>
+    <color name="bottom_toolbar">#fff4f4f4</color>
+    <color name="toolbar_background">#ffffff</color>
+    <color name="popup_window_background">#56000000</color>
+    <color name="actionbar_background">#fff7f7f7</color>
+    <color name="theme_background">#69be87</color>
+    <color name="bg_light_gray">#f4f4f4</color>
+    <color name="color_gray_title">#444444</color>
+    <color name="bg_color_gray">#f1f1f4</color>
+    <color name="band_gray">#f5f5f8</color>
+    <color name="band_red">#e61616</color>
+    <color name="bg_barrage">#26FFFFFF</color>
+    <color name="bg_home_navigation_tab_0">#3A454D</color>
+    <color name="bg_home_navigation_tab_1">#FAAD32</color>
+    <color name="bg_home_navigation_tab_2">#8280FF</color>
+    <color name="bg_home_navigation_tab_3">#FF5D5D</color>
+    <color name="bg_home_navigation_tab_4">#5AC8FA</color>
+    <color name="bg_home_news_tips">#F5F6FA</color>
+
+    <!--Text color -->
+    <color name="colorTextApp">#444a59</color>
+    <color name="colorTextApp0">#333333</color>
+    <color name="colorTextApp1">#666666</color>
+    <color name="colorTextApp2">#999999</color>
+    <color name="colorTextApp3">#cccccc</color>
+    <color name="colorTextApp4">#FFE61616</color>
+    <color name="colorTextApp5">#627ea0</color>
+    <color name="colorTextApp6">#FFC1C2</color>
+    <color name="colorTextApp7">#151515</color>
+    <color name="colorTextApp8">#6699cc</color>
+    <color name="colorTextApp9">#5a5b72</color>
+    <color name="colorTextApp10">#9B9B9B</color>
+    <color name="colorTextApp11Red">#FB6D6D</color>
+    <color name="colorTextApp12Red">#FA4848</color>
+    <color name="colorTextApp13Gray">#8c8ea5</color>
+    <color name="colorTextApp14Gray">#aaaaaa</color>
+    <color name="colorTextApp15">#FFE61616</color>
+    <color name="colorTextApp16">#FF4DD0E1</color>
+    <color name="colorTextApp17">#535353</color>
+    <color name="colorTextApp18">#8E8E93</color>
+    <color name="colorTextApp19yellow">#FFBA00</color>
+    <color name="colorTextApp20">#FF2d54</color>
+    <color name="colorTextApp21">#FF2d55</color>
+    <color name="colorTextApp22orange">#FF9000</color>
+
+
+    <!--border-->
+    <color name="colorLine">#dddddd</color>
+    <color name="colorBorder">#cccccc</color>
+    <color name="colorGray1">#f1f1f4</color>
+    <color name="colorSpliter">#EBEBEB</color>
+
+    <!--Common -->
+    <color name="colorWhite">#ffffffff</color>
+    <color name="colorBlack">#ff000000</color>
+    <color name="colorTransparencyBlack88">#88000000</color>
+    <color name="colorGray">#ffd9d9d9</color>
+    <color name="colorRed">#ffff5d5d</color>
+    <color name="colorGreed">#ff00ff00</color>
+    <color name="colorOrange">#FFFF7F00</color>
+    <color name="colorTransparency">#00000000</color>
+    <color name="colorDisable">#e5e5e5</color>
+    <color name="color_e61616">#e61616</color>
+    <color name="colorWarn">#FF8C32</color>
+    <color name="colorTransparency30">#4C000000</color>
+
+    <!--Button-->
+    <color name="btn_color_normal">#FFE61616</color>
+    <color name="btn_color_press">#FFE61616</color>
+    <color name="btn_color_disable">#66E61616</color>
+    <color name="f4f4f7">#f4f4f7</color>
+    <color name="f4f5f6">#f4f5f6</color>
+    <color name="f5f6fa">#f5f6fa</color>
+    <color name="fff4e2">#fff4e2</color>
+
+    <color name="btn_white_normal">#ffffff</color>
+    <color name="btn_white_pressed">#e5e5e5</color>
+    <color name="btn_white_disable">#e5e5e5</color>
+    <color name="btn_layout_normal">#ffffff</color>
+    <color name="btn_layout_press">#e5e5e5</color>
+    <color name="btn_goto_item_line_gb">#d9d9d9</color>
+    <color name="btn_goto_item_normal_font">#333333</color>
+    <color name="btn_goto_item_normal_font_right">#666666</color>
+    <color name="btn_goto_item_pressed">#e5e5e5</color>
+    <color name="btn_blue_pressed">#72bb77</color>
+    <color name="btn_tabrl_item_gb">#ffffff</color>
+    <color name="btn_tabrl_item_caption">#333333</color>
+    <color name="btn_tabrl_item_subcaption">#666666</color>
+
+
+    <!--Text btn -->
+    <color name="text_btn_normal_color">#ff8C8EA5</color>
+    <color name="text_btn_press_color">#ff999999</color>
+    <color name="text_btn_selected_color">#ff000000</color>
+    <color name="text_btn_definition_normal_color">#ffffff</color>
+    <color name="text_btn_definition_selected_color">#e61616</color>
+    <color name="text_btn_definition_disable_color">#cccccc</color>
+
+    <!--RichEdit-->
+    <color name="add_material_title_background">#ffffffff</color>
+    <color name="add_material_title_bottom_line">#eaeaea</color>
+
+    <!--Indicator-->
+    <color name="indicator_un_selected">#a0a9be</color>
+    <color name="indicator_selected">#434a58</color>
+
+    <!--Loding view-->
+    <color name="loading_background_color">#cccccc</color>
+    <color name="loading_foreground_color">#e61616</color>
+    <color name="color_ff8a65">#ff8a65</color>
+    <color name="color_ffb74d">#ffb74d</color>
+    <color name="color_ffd54f">#ffd54f</color>
+    <color name="color_d3d3d9">#d3d3d9</color>
+    <color name="color_f99a0f">#F99A0F</color>
+
+
+    <color name="color_f1f1f4">#f1f1f4</color>
+    <color name="color_9b9b9b">#9b9b9b</color>
+    <color name="color_aaaaaa">#AAAAAA</color>
+    <color name="color_8c8ea5">#8C8EA5</color>
+    <color name="color_1e1e33">#1e1e33</color>
+    <color name="color_6699cc">#6699CC</color>
+    <color name="color_1f1f33">#1f1f33</color>
+    <color name="color_CCCCCC">#CCCCCC</color>
+    <color name="color_3E3E66">#3E3E66</color>
+    <color name="color_424266">#424266</color>
+    <color name="color_ecedef">#ECEDEF</color>
+    <color name="color_cacacc">#CACACC</color>
+    <color name="color_d8d8d8">#D8D8D8</color>
+    <color name="color_b3b3b3">#B3B3B3</color>
+    <color name="color_222222">#222222</color>
+    <color name="color_bcbcbc">#BCBCBC</color>
+    <color name="color_eeeeee">#eeeeee</color>
+    <color name="color_dddddd">#dddddd</color>
+    <color name="color_333333">#333333</color>
+    <color name="color_ff2d55">#FF2D55</color>
+
 </resources>

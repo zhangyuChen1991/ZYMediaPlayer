@@ -7,12 +7,99 @@
                                              android:layout_height="match_parent"
                                              android:orientation="vertical">
 
-
-    <SeekBar
-        android:id="@+id/dvv_seekBar"
+    <LinearLayout
+        android:id="@+id/dvv_bottom_ctrl_area"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:background="#70000000"
         app:layout_constraintBottom_toBottomOf="@+id/root"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
+        android:orientation="horizontal">
+
+
+        <!--播放按钮-->
+        <ImageButton
+            android:id="@+id/img_btn_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:background="@null"
+            android:contentDescription="@null"
+            android:padding="10dp"
+            android:src="@drawable/er_c"
+            app:layout_constraintRight_toLeftOf="@+id/mp_txt_position"
+            />
+
+        <!--下一集按钮-->
+        <ImageButton
+            android:id="@+id/img_btn_play_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:background="@null"
+            android:contentDescription="@null"
+            android:padding="10dp"
+            android:src="@drawable/btn_full_screen_play_next"
+            android:visibility="gone"/>
+
+        <!-- 进度条-->
+        <TextView
+            android:id="@+id/dvv_text_position"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:text="00:00"
+            app:layout_constraintRight_toLeftOf="@+id/dvv_seekBar"/>
+
+        <SeekBar
+            android:id="@+id/dvv_seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"/>
+        <ImageButton
+            android:id="@+id/imgbtn_full_screen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="6dp"
+            android:background="@null"
+            android:contentDescription="@null"
+            android:padding="10dp"
+            android:src="@drawable/btn_play_full_screen"
+            app:layout_constraintRight_toRightOf="@id/dvv_bottom_ctrl_area"/>
+
+        <TextView
+            android:id="@+id/tv_video_resolution"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:gravity="center"
+            android:text="@string/common_definition_standard"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/dp16"
+            android:visibility="gone"/>
+
+        <!--本地标示-->
+        <TextView
+            android:id="@+id/tv_video_local_def"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:gravity="center"
+            android:text="@string/video_control_local"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/dp16"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tv_video_select"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:gravity="center"
+            android:text="@string/video_control_select"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/dp16"
+            android:visibility="gone"/>
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

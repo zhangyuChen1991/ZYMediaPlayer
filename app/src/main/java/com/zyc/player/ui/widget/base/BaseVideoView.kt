@@ -6,8 +6,10 @@ import android.os.Handler
 import android.os.Message
 import android.util.AttributeSet
 import android.util.Log
+import android.view.Gravity
 import android.view.SurfaceHolder
 import android.view.SurfaceView
+import android.view.View
 import android.widget.FrameLayout
 import android.widget.MediaController
 import com.zyc.player.util.ToastUtil
@@ -24,8 +26,8 @@ abstract class BaseVideoView : FrameLayout, MediaController.MediaPlayerControl {
     protected val MSG_PLAY_COMPLETE = 0x20;
 
     lateinit var iMediaPlayer: IMediaPlayer;
-    private lateinit var mContext: Context;
-    private lateinit var mSurfaceView: SurfaceView
+    protected lateinit var mContext: Context;
+    protected lateinit var mSurfaceView: SurfaceView
     val TAG = "BaseVideoView"
     lateinit var videoHandler: VideoHandler
 
@@ -38,7 +40,7 @@ abstract class BaseVideoView : FrameLayout, MediaController.MediaPlayerControl {
                     updateProgress(currentPosition)
                     videoHandler.sendEmptyMessageDelayed(MSG_UPDATE_PROGRESS, 1000)
                 }
-                MSG_PLAY_COMPLETE ->{
+                MSG_PLAY_COMPLETE -> {
                     updateProgress(iMediaPlayer.duration)
                 }
             }
@@ -66,6 +68,8 @@ abstract class BaseVideoView : FrameLayout, MediaController.MediaPlayerControl {
 
         mSurfaceView = SurfaceView(mContext)
         addView(mSurfaceView)
+        var param :LayoutParams = mSurfaceView.layoutParams as LayoutParams
+        param.gravity = Gravity.CENTER
 
         mSurfaceView.holder.addCallback(object : SurfaceHolder.Callback {
             override fun surfaceChanged(holder: SurfaceHolder?, format: Int, width: Int, height: Int) {
@@ -86,12 +90,14 @@ abstract class BaseVideoView : FrameLayout, MediaController.MediaPlayerControl {
 
         iMediaPlayer.setOnPreparedListener(object : IMediaPlayer.OnPreparedListener {
             override fun onPrepared(mp: IMediaPlayer) {
+
+                resetPlayAreaSize(iMediaPlayer.videoWidth,iMediaPlayer.videoHeight)
                 start()
             }
         })
 
-        iMediaPlayer.setOnCompletionListener(object :IMediaPlayer.OnCompletionListener{
-            override fun onCompletion(mp: IMediaPlayer){
+        iMediaPlayer.setOnCompletionListener(object : IMediaPlayer.OnCompletionListener {
+            override fun onCompletion(mp: IMediaPlayer) {
                 onPlayCompletion(mp)
             }
         })
@@ -108,7 +114,9 @@ abstract class BaseVideoView : FrameLayout, MediaController.MediaPlayerControl {
         initView()
     }
 
-    open fun onPlayCompletion(mp: IMediaPlayer){
+    abstract fun resetPlayAreaSize(videoWidth: Int, videoHeight: Int)
+
+    open fun onPlayCompletion(mp: IMediaPlayer) {
         videoHandler.sendEmptyMessage(MSG_PLAY_COMPLETE)
         videoHandler.removeMessages(MSG_UPDATE_PROGRESS)
     }
@@ -118,6 +126,8 @@ abstract class BaseVideoView : FrameLayout, MediaController.MediaPlayerControl {
     abstract fun initResources()
 
     fun play(context: Context, uri: Uri) {
+        if(iMediaPlayer.isPlaying) return
+
         iMediaPlayer.setDataSource(context, uri)
         iMediaPlayer.setScreenOnWhilePlaying(true)
         iMediaPlayer.prepareAsync()
@@ -171,7 +181,7 @@ abstract class BaseVideoView : FrameLayout, MediaController.MediaPlayerControl {
 
     abstract fun setMaxProgress(duration: Int)
 
-    fun stop() {
+    open fun stop() {
         iMediaPlayer.stop();
         videoHandler.removeMessages(MSG_UPDATE_PROGRESS)
     }

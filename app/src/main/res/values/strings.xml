@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">ZYMediaPlayer</string>
+    <string name="video_control_select">选集</string>
+    <string name="video_control_local">本地</string>
+
+    <string name="common_definition_blue_light">蓝光</string>
+    <string name="common_definition_super">超清</string>
+    <string name="common_definition_standard">标清</string>
+    <string name="common_definition_fluency">流畅</string>
 </resources>
